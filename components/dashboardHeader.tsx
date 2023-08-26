@@ -130,7 +130,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
               </Button>
               <Button 
                 onClick={() => router.push('/account')} 
-                className="bg-secondary"
+                className="bg-primary"
               >
                 <FaUserAlt />
               </Button>

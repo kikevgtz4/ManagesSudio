@@ -283,6 +283,7 @@ export interface Database {
           avatar_url: string | null
           billing_address: Json | null
           DoB: string | null
+          email: string | null
           first_name: string | null
           id: string
           last_name: string | null
@@ -296,6 +297,7 @@ export interface Database {
           avatar_url?: string | null
           billing_address?: Json | null
           DoB?: string | null
+          email?: string | null
           first_name?: string | null
           id: string
           last_name?: string | null
@@ -309,6 +311,7 @@ export interface Database {
           avatar_url?: string | null
           billing_address?: Json | null
           DoB?: string | null
+          email?: string | null
           first_name?: string | null
           id?: string
           last_name?: string | null

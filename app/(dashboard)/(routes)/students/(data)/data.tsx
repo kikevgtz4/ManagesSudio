@@ -26,22 +26,22 @@ import {
   
   export const statuses = [
     {
-      value: "active",
+      value: "Active",
       label: "Active",
       icon: QuestionMarkCircledIcon,
     },
     {
-      value: "pending",
-      label: "Tending",
+      value: "Pending",
+      label: "Pending",
       icon: CircleIcon,
     },
     {
-      value: "free trial",
+      value: "Free Trial",
       label: "Free Trial",
       icon: StopwatchIcon,
     },
     {
-      value: "inactive",
+      value: "Inactive",
       label: "Inactive",
       icon: CheckCircledIcon,
     },

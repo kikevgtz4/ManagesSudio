@@ -52,10 +52,12 @@
     "tailwindcss-animate": "^1.0.6",
     "toast": "^0.5.4",
     "typescript": "5.1.6",
+    "uniqid": "^5.4.0",
     "zod": "^3.22.2",
     "zustand": "^4.4.1"
   },
   "devDependencies": {
+    "@types/uniqid": "^5.3.2",
     "supabase": "^1.86.2"
   }
 }

@@ -9,6 +9,9 @@ import { DataTableViewOptions } from "@/components/ui/data-table/data-table-view
 
 import { priorities, statuses } from "./data"
 import { DataTableFacetedFilter } from "@/components/ui/data-table/data-table-faceted-filter"
+import useAuthModal from "@/hooks/useAuthModel";
+import { useUser } from "@/hooks/useUser";
+import useUploadModal from "@/hooks/useUploadModal";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
@@ -19,8 +22,26 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0
 
+  const AuthModal = useAuthModal();
+  const { user, subscription } = useUser();
+  const AddStudentModal = useUploadModal();
+  const onClick = () => {
+    if (!user) {
+      return AuthModal.onOpen();
+    }
+    return AddStudentModal.onOpen();
+  }
+
+
   return (
     <div className="flex items-center justify-between">
+      <Button
+      onClick={onClick}
+      className="transition"
+      >
+        Add Student
+      </Button>
+      <div className="flex ">
       <div className="flex flex-1 items-center space-x-2">
         <Input
           placeholder="Filter students..."
@@ -55,7 +76,11 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
-      <DataTableViewOptions table={table} />
-    </div>
+      <div className="flex pl-2">
+        <DataTableViewOptions table={table} />
+      </div>
+      
+      </div>
+      </div>
   )
 }

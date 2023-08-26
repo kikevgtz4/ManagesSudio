@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     if (!session) {
       redirect("/login");
     }
-  
+
     return (
       <div>
         <Heading

@@ -3,6 +3,7 @@ import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
 import DashboardHeader from "@/components/dashboardHeader";
 import CheckAuth from "@/components/auth/checkAuth"; // Import the CheckAuth component
+import ModalProvider from "@/providers/ModalProvider";
 
 const DashboardLayout = ({
     children
@@ -19,7 +20,7 @@ const DashboardLayout = ({
             </div>
             <main className="md:pl-72">
                 <Navbar />
-                
+                <ModalProvider />
                 {children}
             </main>
         </div>
