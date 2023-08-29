@@ -4,12 +4,16 @@ import Sidebar from "@/components/sidebar";
 import DashboardHeader from "@/components/dashboardHeader";
 import CheckAuth from "@/components/auth/checkAuth"; // Import the CheckAuth component
 import ModalProvider from "@/providers/ModalProvider";
+import getStudentById from "@/actions/getStudentsByID";
 
-const DashboardLayout = ({
-    children
+export default async function DashboardLayout ({
+    children,
+    id,
 }: {
     children: React.ReactNode;
-}) => {
+    id: string
+}) {
+    const student = await getStudentById(id);
     return ( 
         <div className="h-full relative">
             <DashboardHeader>
@@ -20,11 +24,9 @@ const DashboardLayout = ({
             </div>
             <main className="md:pl-72">
                 <Navbar />
-                <ModalProvider />
+                <ModalProvider students={student}/>
                 {children}
             </main>
         </div>
      );
 }
- 
-export default DashboardLayout;

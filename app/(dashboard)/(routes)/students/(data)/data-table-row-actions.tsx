@@ -20,17 +20,45 @@ import {
 
 import { labels } from "./data"
 import { Student } from "@/types/types"
+import useEditModal from "@/hooks/useEditModal"
+import useAuthModal from "@/hooks/useAuthModel";
+import { useUser } from "@/hooks/useUser";
+import UpdateStudentModal from "@/components/modals/UpdateStudentModal"
+import useUploadModal from "@/hooks/useUploadModal"
+import useOnUpdateModal from "@/hooks/useOnUpdateModal"
+import { MouseEvent } from 'react'; // Import MouseEvent
+
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>
+  students: Student[];
 }
 
 export function DataTableRowActions<TData>({
   row,
+  students
 }: DataTableRowActionsProps<TData>) {
   const student = row.original as Student;
 
+  const authModal = useAuthModal();
+  const { user, subscription } = useUser();
+
+  const onUpateModal = (event: MouseEvent<HTMLDivElement>, id: string) => {
+    event.stopPropagation();  
+  }
+
+  // const onClick = () => {
+  //   if (!user) {
+  //     return authModal.onOpen();
+  //   }
+  //   //check for subscription
+    
+  //   return updateStudentModal.onOpen(); // Use the onOpen function from the hook
+    
+  // }
+
   return (
+    <div>
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
@@ -42,7 +70,13 @@ export function DataTableRowActions<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem>Edit</DropdownMenuItem>
+      <DropdownMenuItem 
+      onClick={(event) => 
+        onUpateModal(event, student.id)} 
+      key={student.id} 
+      /*data={student}*/
+
+      >Edit</DropdownMenuItem>
         <DropdownMenuItem>Make a copy</DropdownMenuItem>
         <DropdownMenuItem>Favorite</DropdownMenuItem>
         <DropdownMenuSeparator />
@@ -65,5 +99,6 @@ export function DataTableRowActions<TData>({
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+    </div>
   )
 }

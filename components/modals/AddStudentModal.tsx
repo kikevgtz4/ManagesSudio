@@ -35,7 +35,7 @@ const AddStudentModal = () => {
       status: "", // Provide the default status or choose one
       email: "", // Provide the email or leave it empty
       middle_name: null, // Provide the middle name or leave it empty
-      image: null,
+      image_path: null,
     }
   });
 
@@ -51,6 +51,7 @@ const AddStudentModal = () => {
       setIsLoading(true);
       
       const imageFile = values.image?.[0];
+      
       if (!user) {
         toast.error('Missing fields')
         return;
@@ -83,9 +84,9 @@ const AddStudentModal = () => {
           first_name: values.first_name,
           last_name: values.last_name,
           DoB: values.DoB,
-          status: values.status, // Provide the default status or choose one
-          email: values.status, // Provide the email or leave it empty
-          middle_name: values.middle_name, // Provide the middle name or leave it empty 
+          status: values.status,
+          email: values.status, 
+          middle_name: values.middle_name, 
           image_path: imageData.path,
         });
 
